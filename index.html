@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Limit Trucking LLC - Committed to Quality</title>
+    
+    <!-- Modern & Professional Google Fonts -->
+    <!-- Oswald for powerful headings, Inter for clean, modern navigation/text -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --navy-blue: #1c2b39;
+            --brand-red: #ba1e25;
+            --light-cream: #fbf8f1;
+            --white: #ffffff;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Apply Inter as the default clean font */
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER & NAVBAR --- */
+        .header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 100;
+        }
+
+        .mobile-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Hamburger Menu Button (Hidden on Desktop) */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 26px;
+            color: var(--navy-blue);
+            cursor: pointer;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: var(--brand-red);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone-number {
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+        }
+
+        .phone-number i {
+            color: var(--brand-red);
+        }
+
+        .btn-red {
+            background-color: var(--brand-red);
+            color: var(--white);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: background 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-red:hover {
+            background-color: #9a171d;
+        }
+
+        /* --- SLIDING SIDEBAR MENU (MOBILE) --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Hidden off-screen by default */
+            width: 280px;
+            height: 100vh;
+            background-color: var(--navy-blue);
+            z-index: 999;
+            transition: left 0.4s ease;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.active {
+            left: 0; /* Slides in */
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 28px;
+            align-self: flex-end;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .sidebar-links li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .sidebar-links li a:hover {
+            color: var(--brand-red);
+        }
+
+        /* --- HERO SECTION (DESKTOP DEFAULT) --- */
+        .hero {
+            position: relative;
+            min-height: 85vh; 
+            background-image: url('media/hero.webp'); 
+            background-position: center right;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: var(--navy-blue); 
+            display: flex;
+            align-items: center; 
+        }
+
+        /* Gradient Overlay Base (PC Layout: Left to Right) */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(28, 43, 57, 1) 0%, rgba(28, 43, 57, 0.8) 45%, transparent 100%);
+            z-index: 1;
+        }
+
+        /* Text Content Container */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            max-width: 650px;
+            padding: 0 5%;
+        }
+
+        .hero-content h1 {
+            font-family: 'Oswald', sans-serif; /* Powerful Modern Font for Heading */
+            font-size: 64px; /* Slightly larger for Oswald */
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px; /* Cinematic feel */
+        }
+
+        .hero-content p {
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #d1d5db;
+            font-weight: 400;
+        }
+
+        /* --- FEATURES BOTTOM BAR --- */
+        .features-bar {
+            background-color: var(--light-cream);
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            padding: 30px 5%;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--brand-red);
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+
+        .feature-item span {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+            letter-spacing: 0.5px;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 52px; }
+            .nav-links { display: none; } /* Hide desktop nav */
+            .menu-btn { display: block; } /* Show Hamburger */
+            .features-bar { gap: 40px; flex-wrap: wrap; }
+        }
+
+        /* --- MOBILE VIEW (PERFECT 16:9 IMAGE FIX) --- */
+        @media (max-width: 768px) {
+            .header-right .phone-number { display: none; }
+            
+            .hero {
+                min-height: auto; 
+                display: block; 
+                background-size: 100% 56.25vw; 
+                background-position: top center; 
+                background-color: var(--navy-blue); 
+                padding-top: 45vw; 
+                padding-bottom: 50px; 
+            }
+            
+            .hero-overlay {
+                background: linear-gradient(to bottom, transparent 0%, transparent 20vw, var(--navy-blue) 55vw, var(--navy-blue) 100%);
+            }
+            
+            .hero-content {
+                text-align: center; 
+                max-width: 100%;
+            }
+            
+            .hero-content h1 { font-size: 42px; margin-bottom: 15px; }
+            .hero-content p { font-size: 15px; margin-bottom: 25px; }
+            
+            .features-bar { gap: 20px; flex-direction: column; }
+        }
+
+        /* --- TOP ANNOUNCEMENT BAR --- */
+.top-announcement-bar {
+    background-color: var(--navy-blue);
+    color: var(--white);
+    padding: 8px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.top-announcement-bar .flag {
+    font-size: 16px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.announcement-right {
+    display: flex;
+    align-items: center;
+}
+
+.phone-link {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+}
+
+.phone-link:hover {
+    color: var(--brand-red);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .top-announcement-bar {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+        padding: 10px 5%;
+        font-size: 12px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Sliding Sidebar Menu (Mobile) -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button>
+        <ul class="sidebar-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Fleet</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li style="margin-top: 20px;"><a href="#" class="btn-red" style="display: block; text-align: center;">Request a Quote</a></li>
+        </ul>
+    </div>
+    <!-- Top Announcement Bar -->
+<!-- Top Announcement Bar -->
+<div class="top-announcement-bar">
+    <div class="announcement-left">
+        <!-- SVG Flag image used here for 100% cross-device compatibility -->
+        <img src="https://flagcdn.com/w20/us.png" alt="USA Flag" class="flag-icon"> 
+        Proudly providing nationwide logistics across the USA
+    </div>
+    <div class="announcement-right">
+        <span>Contact Us:</span> 
+        <a href="tel:18005550199" class="phone-link">1-800-555-0199</a>
+    </div>
+</div>
+    <!-- Header / Navbar -->
+    <header class="header">
+        <div class="mobile-left">
+            <!-- Hamburger Icon -->
+            <button class="menu-btn" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="logo">
+                <img src="media/logo.webp" alt="No Limit Trucking LLC">
+            </div>
+        </div>
+        
+        <!-- Desktop Nav -->
+        <ul class="nav-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Fleet</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+
+        <div class="header-right">
+            <div class="phone-number">
+                <i class="fa-solid fa-phone"></i> 1-800-555-0199
+            </div>
+            <a href="#" class="btn-red">Request a Quote</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>COMMITTED TO EXCELLENCE</h1>
+            <p>More than a decade of showing up, delivering on time, and earning trust on every mile. At No Limit Trucking LLC, we are committed to efficiency in all that we do—focusing on the details and standing behind our logistics with integrity.</p>
+            <a href="#" class="btn-red">Explore Our Fleet</a>
+        </div>
+    </section>
+
+    <!-- Bottom Features Bar -->
+    <div class="features-bar">
+        <div class="feature-item">
+            <div class="icon-circle"><i class="fa-solid fa-truck-fast"></i></div>
+            <span>Expedited Freight</span>
+        </div>
+        <div class="feature-item">
+            <div class="icon-circle"><i class="fa-solid fa-route"></i></div>
+            <span>Nationwide Routes</span>
+        </div>
+        <div class="feature-item">
+            <div class="icon-circle"><i class="fa-solid fa-warehouse"></i></div>
+            <span>Warehouse Logistics</span>
+        </div>
+        <div class="feature-item">
+            <div class="icon-circle"><i class="fa-solid fa-headset"></i></div>
+            <span>24/7 Dispatch</span>
+        </div>
+    </div>
+
+    <!-- JavaScript for Toggle Menu -->
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+   <!-- ==============================================
+         PART 2: ABOUT & SERVICES SECTION
+         Add this directly below the Features Bottom Bar
+         ============================================== -->
+
+    <style>
+        /* --- GENERAL SECTION STYLES --- */
+        .section-padding {
+            padding: 100px 5%;
+        }
+        
+        .section-subtitle {
+            color: var(--brand-red);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 46px;
+            color: var(--navy-blue);
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .section-title span {
+            color: var(--text-dark);
+        }
+
+        /* --- ABOUT (VALUE DRIVEN) SECTION --- */
+        .about-section {
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-text {
+            width: 50%;
+            padding-right: 20px;
+        }
+
+        .about-text p {
+            color: #555555;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .about-text .highlight-text {
+            font-weight: 700;
+            color: var(--navy-blue);
+            font-size: 18px;
+            margin-bottom: 35px;
+            border-left: 4px solid var(--brand-red);
+            padding-left: 15px;
+        }
+
+        .btn-outline-navy {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--navy-blue);
+            border: 2px solid var(--navy-blue);
+            padding: 14px 30px;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-navy:hover {
+            background-color: var(--navy-blue);
+            color: var(--white);
+        }
+
+        .about-image-wrapper {
+            width: 50%;
+            position: relative;
+        }
+
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80%;
+            height: 100%;
+            background-color: var(--light-cream);
+            border: 2px solid #eaeaea;
+            z-index: 1;
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+            box-shadow: -10px 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- NEW SERVICES SLIDER SECTION --- */
+        .services-slider-section {
+            background-color: var(--navy-blue); 
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .slider-title {
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 38px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Arrows styling (Visible on PC) */
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-cream);
+            border: none;
+            color: var(--navy-blue);
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .slider-btn:hover {
+            background-color: var(--white);
+            transform: scale(1.05);
+        }
+
+        /* Track holding the cards */
+        .slider-track {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto; 
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; 
+            padding: 10px 0;
+        }
+
+        .slider-track::-webkit-scrollbar { 
+            display: none; 
+        }
+
+        /* Individual Service Cards */
+        .service-card-img {
+            flex: 1;
+            min-width: 240px; 
+            height: 320px;
+            border-radius: 12px;
+            background-color: var(--navy-blue); 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            scroll-snap-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card-img:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Dark Gradient Overlay for text readability */
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(16, 24, 38, 0.95), transparent);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 25px;
+        }
+
+        .card-overlay h4 {
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .about-section {
+                flex-direction: column;
+                gap: 50px;
+            }
+            .about-text, .about-image-wrapper {
+                width: 100%;
+                padding-right: 0;
+            }
+        }
+
+        /* --- MOBILE VIEW FIX (VERTICAL STACKING) --- */
+        @media (max-width: 768px) {
+            .section-padding { padding: 60px 5%; }
+            .section-title { font-size: 36px; }
+            
+            .slider-title { font-size: 30px; margin-bottom: 30px; }
+            .slider-btn { display: none; } 
+
+            /* FIX: Allow container to expand its height automatically */
+            .slider-container {
+                display: block; 
+            }
+
+            /* FIX: Stack cards vertically without hiding overflow */
+            .slider-track {
+                display: flex;
+                flex-direction: column; 
+                align-items: center; 
+                overflow: visible; 
+                gap: 25px; 
+                padding: 0;
+            }
+
+            /* FIX: Remove flex: 1 so cards don't shrink to 0 height */
+            .service-card-img {
+                flex: none; 
+                width: 100%;
+                max-width: 350px; 
+                min-width: auto; 
+                height: 250px; 
+            }
+        }
+    </style>
+
+    <!-- HTML: About (Value Driven) Section -->
+    <section class="about-section section-padding">
+        <div class="about-text">
+            <span class="section-subtitle">Who We Are</span>
+            <h2 class="section-title">Value Driven Logistics.</h2>
+            <p class="highlight-text">At No Limit Trucking LLC, our mission is to drive performance through exceptional service and innovative solutions.</p>
+            <p>Since our inception, we have been committed to delivering value-driven logistics solutions that empower our customers, drivers, and carriers. We operate with a modern fleet equipped with the latest safety technology, ensuring comfort, reliability, and security to get the job done efficiently.</p>
+            <a href="#" class="btn-outline-navy">Learn More About Us</a>
+        </div>
+        <div class="about-image-wrapper">
+            <!-- Professional Warehouse/Logistics Image Generated via AI Prompt -->
+            <img src="media/about.webp" alt="Logistics Management">
+        </div>
+    </section>
+
+    <!-- HTML: NEW Services Slider Section -->
+    <section class="services-slider-section">
+        <h2 class="slider-title">Our Services</h2>
+        
+        <div class="slider-container">
+           
+            
+            <div class="slider-track">
+                <!-- Card 1 -->
+                <div class="service-card-img" style="background-image: url('media/service_1.webp');">
+                    <div class="card-overlay">
+                        <h4>Last Mile</h4>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card-img" style="background-image: url('media/service_2.webp');">
+                    <div class="card-overlay">
+                        <h4>Middle Mile</h4>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card-img" style="background-image: url('media/service_3.webp');">
+                    <div class="card-overlay">
+                        <h4>Warehousing</h4>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card-img" style="background-image: url('media/service_4.webp');">
+                    <div class="card-overlay">
+                        <h4>Expedited Freight</h4>
+                    </div>
+                </div>
+            </div>
+            
+           
+        </div>
+    </section>
+    <!-- ==============================================
+         PART 3: WHY CHOOSE US, CONTACT FORM & FOOTER
+         Add this directly below the Services Section
+         ============================================== -->
+
+    <style>
+        /* --- WHY CHOOSE US (STATS SECTION) --- */
+        .why-section {
+            background-color: var(--white);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-box {
+            background-color: var(--light-cream);
+            padding: 40px 20px;
+            border-radius: 8px;
+            border-bottom: 4px solid var(--brand-red);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: var(--navy-blue);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- CONTACT / REQUEST A QUOTE SECTION --- */
+        .contact-section {
+            display: flex;
+            background-color:  #707275;
+            color: var(--white);
+        }
+
+        .contact-info {
+            width: 50%;
+            padding: 80px 5% 80px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info .section-subtitle {
+            color: var(--brand-red); /* Keep red accent */
+        }
+
+        .contact-info .section-title {
+            color: var(--white);
+        }
+
+        .contact-info p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #d1d5db;
+            margin-bottom: 40px;
+            max-width: 450px;
+        }
+
+        .contact-details {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .contact-details i {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--brand-red);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+
+        /* Form Area */
+        .contact-form-container {
+            width: 50%;
+            background-color: var(--light-cream);
+            padding: 80px 10% 80px 5%;
+        }
+
+        .quote-form {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--navy-blue);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--brand-red);
+        }
+
+        .btn-submit {
+            background-color: var(--brand-red);
+            color: var(--white);
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #9a171d;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: #101824; /* Extra dark navy */
+            color: #8a96a3;
+            text-align: center;
+            padding: 30px 5%;
+            font-size: 14px;
+        }
+
+        .footer span {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-section { flex-direction: column; }
+            .contact-info, .contact-form-container { width: 100%; padding: 60px 5%; }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .form-row { flex-direction: column; gap: 20px; }
+            .quote-form { padding: 30px 20px; }
+        }
+    </style>
+    <!-- ==============================================
+         PART 2.5: THE PROFESSIONALS BEHIND THE WHEEL
+         Insert this between Part 2 and Part 3
+         ============================================== -->
+
+    <style>
+        .driver-section {
+            background-color: var(--light-cream);
+            padding: 80px 5%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .driver-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 50px;
+        }
+
+        .driver-image-container {
+            width: 45%;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            height: 450px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        /* The transparent PNG Driver */
+        .driver-image-container img {
+            height: 90%; /* Driver slightly overlaps truck */
+            width: auto;
+            z-index: 2;
+        }
+
+        .driver-content {
+            width: 50%;
+        }
+
+        .driver-content h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            color: var(--navy-blue);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .driver-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .checklist li {
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: var(--navy-blue);
+        }
+
+        .checklist li i {
+            color: var(--brand-red);
+            margin-right: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .driver-container { flex-direction: column; text-align: center; }
+            .driver-content { width: 100%; }
+            .driver-image-container { width: 100%; height: 350px; }
+            .driver-content h2 { font-size: 32px; }
+        }
+    </style>
+
+    <section class="driver-section">
+        <div class="driver-container">
+            <!-- Left Side: Visuals -->
+            <div class="driver-image-container">
+                <!-- Replace 'driver.png' with your actual transparent file path -->
+                <img src="media/driver.webp" alt="Professional Driver">
+            </div>
+
+            <!-- Right Side: Content -->
+            <div class="driver-content">
+                <span class="section-subtitle">Safety & Professionalism</span>
+                <h2>The Pros Behind The Wheel</h2>
+                <p>Our drivers are more than just operators—they are the backbone of your supply chain. Trained, certified, and committed to the highest safety standards, they ensure your freight arrives safely every single time.</p>
+                
+                <ul class="checklist">
+                    <li><i class="fa-solid fa-check"></i> CDL Certified & Background Verified</li>
+                    <li><i class="fa-solid fa-check"></i> Advanced Defensive Driving Training</li>
+                    <li><i class="fa-solid fa-check"></i> 24/7 Professional Communication</li>
+                </ul>
+                
+                <a href="#" class="btn-red">Join Our Team</a>
+            </div>
+        </div>
+    </section>
+    <!-- HTML: Why Choose Us (Stats) Section -->
+    <section class="why-section">
+        <span class="section-subtitle">The No Limit Advantage</span>
+        <h2 class="section-title">Driven By <span>Numbers.</span></h2>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">48</div>
+                <div class="stat-text">States Covered</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">50+</div>
+                <div class="stat-text">Modern Fleet Trucks</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">99%</div>
+                <div class="stat-text">On-Time Delivery</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">24/7</div>
+                <div class="stat-text">Dispatch Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HTML: Contact / Lead Generation Section -->
+    <section class="contact-section">
+        <div class="contact-info">
+            <span class="section-subtitle">Let's Work Together</span>
+            <h2 class="section-title">Ready To Move Your Freight?</h2>
+            <p>Our logistics experts are standing by to provide you with a customized transportation plan that fits your supply chain needs and budget.</p>
+            
+            <ul class="contact-details">
+                <li><i class="fa-solid fa-phone"></i> 1-800-555-0199</li>
+                <li><i class="fa-solid fa-envelope"></i> dispatch@nolimittruckingllc.com</li>
+                <li><i class="fa-solid fa-location-dot"></i> Houston, Texas (HQ)</li>
+            </ul>
+        </div>
+        
+        <div class="contact-form-container">
+            <form class="quote-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name *</label>
+                        <input type="text" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name *</label>
+                        <input type="text" placeholder="Doe" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" placeholder="john@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" placeholder="(555) 000-0000" required>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label>Service Type *</label>
+                    <select required>
+                        <option value="" disabled selected>Select a service...</option>
+                        <option value="last-mile">Last Mile Delivery</option>
+                        <option value="middle-mile">Middle Mile Logistics</option>
+                        <option value="expedited">Expedited Freight</option>
+                        <option value="warehousing">Warehousing</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Freight Details / Message</label>
+                    <textarea rows="4" placeholder="Tell us about your logistics needs..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit">Request Free Quote</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- HTML: Simple Footer -->
+    <!-- ==============================================
+         PART 4: DETAILED PROFESSIONAL FOOTER
+         Replace your current footer with this detailed version
+         ============================================== -->
+
+    <style>
+        .footer-main {
+            background-color: #0d141d; /* Slightly darker than navy for depth */
+            color: #b0b8c2;
+            padding: 80px 5% 40px 5%;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #b0b8c2;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links li a:hover {
+            color: var(--brand-red);
+            padding-left: 5px;
+        }
+
+        .contact-info-list {
+            list-style: none;
+        }
+
+        .contact-info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .contact-info-list i {
+            color: var(--brand-red);
+            margin-top: 4px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            background: #1c2b39;
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--brand-red);
+        }
+
+        /* Bottom Bar */
+        .footer-bottom {
+            border-top: 1px solid #1c2b39;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-col { text-align: center; }
+            .contact-info-list li { justify-content: center; }
+        }
+    </style>
+
+    <footer class="footer-main">
+        <div class="footer-grid">
+            <!-- Col 1: Branding -->
+            <div class="footer-col">
+                <img src="media/footer_logo.webp" alt="Logo" style="height: 50px; margin-bottom: 20px;">
+                <p>No Limit Trucking LLC provides premium, reliable, and expedited logistics solutions across the United States. We are dedicated to the highest standards of safety and efficiency.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2: Navigation -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Driver Portal</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Services -->
+            <div class="footer-col">
+                <h4>Our Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Last Mile Logistics</a></li>
+                    <li><a href="#">Middle Mile Transport</a></li>
+                    <li><a href="#">Expedited Freight</a></li>
+                    <li><a href="#">Warehousing & Storage</a></li>
+                    <li><a href="#">Temperature Controlled</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Contact -->
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul class="contact-info-list">
+                    <li><i class="fa-solid fa-location-dot"></i> 123 Logistics Way, Houston, TX 77002</li>
+                    <li><i class="fa-solid fa-phone"></i> +1 (800) 555-0199</li>
+                    <li><i class="fa-solid fa-envelope"></i> dispatch@nolimittruckingllc.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 No Limit Trucking LLC. All Rights Reserved.</p>
+            <p style="margin-top: 10px;">Developed with ❤️ by <b>SoftPehchan IT Services</b></p>
+        </div>
+    </footer>
+    </body>
+</html>
